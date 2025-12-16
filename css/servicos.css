@@ -1,0 +1,149 @@
+/* ====== Paleta e Cores ====== */
+:root {
+  --cor-base: #D1C3B6; /* bege pastel principal */
+  --cabecalho: #B3A08D;
+  --pastel-laranja: #e1ae6c; /* Não usado no layout final da imagem, mas mantido */
+  --pastel-verde: #cd7e00; /* Não usado no layout final da imagem, mas mantido */
+  --cor-destaque: #FFD700;
+  --cor-carrossel: #dd9d50; /* Não usado no layout final da imagem, mas mantido */
+  /* NOVO: Cor de fundo dos cartões na imagem é um bege escuro */
+  --cor-cartao-fundo: #463B34; /* Cor escura para os blocos */
+  --cor-fundo-servicos: #E5DCD0; /* Cor de fundo que envolve os cartões no grid */
+}
+
+/* ====== Base (Manter a estrutura básica) ====== */
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  background-color: var(--cor-base);
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: #222;
+}
+h2 {
+  margin-top: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--cor-destaque);
+}
+
+/* ====== Cabeçalho ====== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--cabecalho);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo img{
+  max-width: 50px
+}
+
+nav a {
+  margin: 0 1rem;
+  font-weight: 500;
+}
+
+nav a.ativo {
+  color: var(--cor-destaque);
+}
+
+/* ====== Estrutura Geral e Main ====== */
+.conteudo {
+  max-width: 1000px;
+  margin: 6rem auto;
+  padding: 0 1.5rem;
+}
+
+main {
+  /* Mantém a cor base e estilos do main original */
+  background-color: var(--cor-base); 
+  border-radius: 20px;
+  padding: 3rem 2rem;
+}
+
+/* ---------------------------------------------------- */
+/* ESTILOS DA SEÇÃO DE SERVIÇOS (LAYOUT 3x3) */
+/* ---------------------------------------------------- */
+
+.servicos-grid {
+    display: grid;
+    /* Define 3 colunas flexíveis com um mínimo de 250px */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 20px; 
+    margin-top: 30px;
+    padding: 20px;
+    /* Fundo bege/cinza que simula o fundo da imagem de referência */
+    background-color: var(--cor-fundo-servicos); 
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.cartao-servico {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.cartao-servico:hover {
+    transform: translateY(-5px);
+    opacity: 0.95;
+}
+
+.cartao-visual {
+    /* O bloco preto/escuro principal */
+    width: 100%;
+    /* Truque para criar um quadrado (ou retângulo de proporção fixa) baseado na largura */
+    padding-top: 90%; 
+    background-color: var(--cor-cartao-fundo); 
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.cartao-titulo {
+    /* O texto por baixo do bloco */
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--cor-cartao-fundo); 
+    margin: 0;
+    line-height: 1.2;
+    padding: 0 5px; /* Pequeno padding para evitar que o texto toque nas bordas */
+}
+
+/* ====== Footer ====== */
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid #eee;
+  color: #777;
+  font-size: 0.9rem;
+  background-color: var(--cor-base);
+}
+
+/* ====== Ajuste Responsivo ====== */
+@media (max-width: 768px) {
+  /* No celular, passa para uma coluna única para melhor visualização */
+  .servicos-grid {
+      grid-template-columns: 1fr; 
+      padding: 10px;
+  }
+}
